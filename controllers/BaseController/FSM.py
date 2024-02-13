@@ -29,6 +29,7 @@ def compute_velocities(x_ref, y_ref, theta_ref, x_odom, y_odom, theta_odom):
         
         if np.abs(phi_error) <= eps_theta and np.abs(w) <= 0.001:
             PHASE = 1
+
     elif PHASE == 1:
         w = Kp_w * phi_error
         v = Kp_d * dist
@@ -37,14 +38,15 @@ def compute_velocities(x_ref, y_ref, theta_ref, x_odom, y_odom, theta_odom):
         
         if np.abs(dist) <= eps_dist and np.abs(v) <= 0.01:
             PHASE = 2
+            done = True # ovo prebacis ovde
             
-    elif PHASE == 2:
-        v = 0
-        w = Kp_w * phi_prim_error
+    # elif PHASE == 2:
+    #     v = 0
+    #     w = Kp_w * phi_prim_error
         
-        if np.abs(phi_prim_error) <= eps_theta and np.abs(w) <= 0.01:
-            PHASE = 3
-            done = True
+    #     if np.abs(phi_prim_error) <= eps_theta and np.abs(w) <= 0.01:
+    #         PHASE = 3
+    #         done = True
         
             
     return v, w, done
