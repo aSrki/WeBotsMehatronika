@@ -8,9 +8,9 @@ import numpy as np
 
 if __name__ == "__main__":
     robot = MyRobot(
-        x_init= 0.25,
+        x_init= 0.25, # menjas ovde pocetne koordinate i ugao
         y_init= 0.25,
-        theta_ini= 0.0
+        theta_ini= 0.0 # np.pi/2 == 90deg
     )
     
     # map = GridMap(3.0, 2.0, 0.05)
